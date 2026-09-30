@@ -4,6 +4,8 @@
 
 Este proyecto ha sido actualizado para incluir persistencia de base de datos con Neon PostgreSQL y tarifas de despacho integradas.
 
+**Última actualización:** Base de datos PostgreSQL configurada en Vercel.
+
 ### ✅ Cambios Realizados
 
 #### 1. **Nuevos Archivos**
