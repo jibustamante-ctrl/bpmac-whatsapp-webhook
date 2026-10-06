@@ -189,10 +189,17 @@ export default async function handler(req, res) {
       });
 
       const claudeData = await claudeResponse.json();
+
+      // Verificar si la respuesta de Claude API fue exitosa
+      if (!claudeResponse.ok) {
+        console.error('❌ Error de Claude API:', claudeResponse.status, claudeData);
+        throw new Error(`Claude API error: ${claudeResponse.status} - ${claudeData.error?.message || 'Unknown error'}`);
+      }
+
       const reply = claudeData.content?.[0]?.text;
 
       if (!reply) {
-        throw new Error('Sin respuesta de Claude');
+        throw new Error('Sin respuesta de Claude - contenido vacío');
       }
 
       // Guardar en BD (no es bloqueante si falla)
